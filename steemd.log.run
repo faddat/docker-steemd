@@ -1,0 +1,2 @@
+#!/bin/sh
+exec chpst -usyslog logger -t steemd

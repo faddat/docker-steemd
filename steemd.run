@@ -28,11 +28,15 @@ for NODE in $SEED_NODES ; do
   ARGS+=" --seed-node=$NODE"
 done
 
+# without --data-dir it uses cwd as datadir(!)
+# who knows what else it dumps into current dir
 cd $HOME
+
 exec chpst -usteemd \
     steemd \
         --rpc-endpoint=0.0.0.0:8090 \
         --p2p-endpoint=0.0.0.0:2001 \
+        --data-dir=$HOME \
         $ARGS \
         $STEEMD_EXTRA_OPTS \
         2>&1

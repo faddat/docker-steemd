@@ -103,3 +103,4 @@ EXPOSE 2001
 
 RUN mkdir -p /etc/service/steemd
 ADD steemd.run /etc/service/steemd/run
+RUN chmod +x /etc/service/steemd/run

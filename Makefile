@@ -12,7 +12,13 @@ build: kill
 		.
 
 run: kill
-	docker run --name sneak-steemd -d sneak/steemd
+	docker run \
+		--name sneak-steemd \
+		-e STEEMD_WITNESS_NAME=$(STEEMD_WITNESS_NAME) \
+		-e STEEMD_MINER_NAME=$(STEEMD_MINER_NAME) \
+		-e STEEMD_PRIVATE_KEY=$(STEEMD_PRIVATE_KEY) \
+		-d \
+		sneak/steemd
 	docker logs -f sneak-steemd
 
 kill:

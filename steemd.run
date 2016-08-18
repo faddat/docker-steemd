@@ -29,9 +29,10 @@ for NODE in $SEED_NODES ; do
 done
 
 cd $HOME
-chpst -usteemd \
+exec chpst -usteemd \
     steemd \
         --rpc-endpoint=0.0.0.0:8090 \
+        --p2p-endpoint=0.0.0.0:2001 \
         $ARGS \
         $STEEMD_EXTRA_OPTS \
-        2>&1 | logger -t steemd
+        2>&1

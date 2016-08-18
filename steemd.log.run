@@ -1,2 +1,0 @@
-#!/bin/sh
-exec chpst -udaemon svlogd -tt /var/log/steemd

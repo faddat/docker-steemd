@@ -96,14 +96,10 @@ RUN chown steemd:steemd -R /var/lib/steemd
 
 VOLUME ["/var/lib/steemd"]
 
-EXPOSE 8332
-
-EXPOSE 8333
+# rpc service:
+EXPOSE 8090
+# p2p service:
+EXPOSE 2001
 
 RUN mkdir -p /etc/service/steemd
 ADD steemd.run /etc/service/steemd/run
-
-ADD steemd.log.run /etc/service/steemd/log/run
-
-RUN chmod +x /etc/service/steemd/log/run \
-    /etc/service/steemd/run

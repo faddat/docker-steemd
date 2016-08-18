@@ -1,26 +1,26 @@
 # sneak/steemd docker image
 
-# Build Args
+## Build Args
 
-    * `STEEMD_REPO`
-    * `STEEMD_REV`
-    * `SECP256K1_REPO`
-    * `SECP256K1_REV`
-    * `UBUNTU_MIRROR`
+    * STEEMD\_REPO
+    * STEEMD\_REV
+    * SECP256K1\_REPO
+    * SECP256K1\_REV
+    * UBUNTU\_MIRROR
 
-# Environment Variables
+## Environment Variables
 
-    * `STEEMD_WITNESS_NAME`
-    * `STEEMD_MINER_NAME`
-    * `STEEMD_PRIVATE_KEY`
+    * STEEMD\_WITNESS\_NAME
+    * STEEMD\_MINER\_NAME
+    * STEEMD\_PRIVATE\_KEY
         * Bitcoin Wallet Import Format (WIF)
-    * `STEEMD_MINING_THREADS`
+    * STEEMD\_MINING\_THREADS
         * default 8
-    * `STEEMD_EXTRA_OPTS`
+    * STEEMD\_EXTRA\_OPTS
         * passed in to steemd on command line
 
-The init scripts will do all the silly escaping, just set these
-to the actual unquoted strings.
+The init scripts will do all the silly escaping as required
+by the daemon, just set these vars to the actual unquoted strings.
 
 # Versions
 

@@ -1,2 +1,2 @@
 #!/bin/sh
-exec chpst -usyslog logger -t steemd
+exec chpst -udaemon svlogd -tt /var/log/steemd

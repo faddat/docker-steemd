@@ -1,14 +1,37 @@
 #!/bin/bash
 
-export HOME="/var/lib/steem"
+set -x
 
-# gen random pw for rpc server
+export HOME="/var/lib/steemd"
+
 RANDOMPW=$(dd if=/dev/urandom bs=10 count=1 status=none |
     shasum | cut -b 1-20)
 
-chown -R steem:steem $HOME
+chown -R steemd:steemd $HOME
 
-exec chpst -usteem \
-    steemd $ARGS \
+SEED_NODES="
+    52.38.66.234:2001
+    52.37.169.52:2001
+    52.26.78.244:2001
+    192.99.4.226:2001
+    46.252.27.1:1337
+    81.89.101.133:2001
+    52.4.250.181:39705
+    steemd.pharesim.me:2001
+    seed.steemed.net:2001
+    steem.clawmap.com:2001
+    seed.steemwitness.com:2001
+    steem-seed1.abit-more.com:2001
+"
+ARGS=""
+for NODE in $SEED_NODES ; do
+  ARGS+=" --seed-node=$NODE"
+done
+
+cd $HOME
+chpst -usteemd \
+    steemd \
+        --rpc-endpoint=0.0.0.0:8090 \
+        $ARGS \
         $STEEMD_EXTRA_OPTS \
-        2>&1
+        2>&1 | logger -t steemd

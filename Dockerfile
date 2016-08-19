@@ -49,7 +49,7 @@ RUN \
     git checkout $SECP256K1_REV && \
     ./autogen.sh && \
     ./configure && \
-    make -j8 && \
+    make && \
     ./tests && \
     make install && \
     cd / && \
@@ -67,7 +67,7 @@ RUN \
         -DLOW_MEMORY_NODE=ON \
         . \
     && \
-    make -j8 && \
+    make && \
     make install && \
     rm -rf /usr/local/src/steem
 

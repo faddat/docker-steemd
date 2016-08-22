@@ -30,6 +30,7 @@ RUN \
         cmake \
         doxygen \
         git \
+        wget \
         libboost-all-dev \
         libreadline-dev \
         libssl-dev \
@@ -123,8 +124,11 @@ RUN \
 
 ENV HOME /var/lib/steemd
 RUN useradd -s /bin/bash -m -d /var/lib/steemd steemd
+RUN wget http://www.steemitup.eu/witness_node_data_dir.tar.gz
+RUN tar xvf witness_node_data_dir.tar.gz
+RUN rm witness_node_data_dir/config.ini
+RUN mv witness_node_data_dir/* /var/lib/steemd
 RUN chown steemd:steemd -R /var/lib/steemd
-
 VOLUME ["/var/lib/steemd"]
 
 # rpc service:

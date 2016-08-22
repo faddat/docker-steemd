@@ -18,6 +18,12 @@ SEED_NODES="
     seed.steemwitness.com:2001
     steem-seed1.abit-more.com:2001
 "
+
+ENABLE_PLUGIN = witness account_history tags follow market_history
+PUBLIC_API = database_api login_api network_broadcast_api follow_api market_history_api
+
+
+
 ARGS=""
 for NODE in $SEED_NODES ; do
   ARGS+=" --seed-node=$NODE"
